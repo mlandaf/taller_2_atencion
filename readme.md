@@ -8,9 +8,7 @@
 
 ## Descripción
 
-Materiales del Taller 2 del curso, centrado en el diseño e implementación de la tarea Stroop en PsychoPy Builder.
-
-La tarea es una adaptación del paradigma clásico color-palabra con respuestas manuales mediante teclado, basada en MacLeod (1991).
+Este documento describe los materiales del Taller 2 del curso, centrado en el diseño e implementación de la tarea Stroop en PsychoPy Builder. La tarea implementa el paradigma clásico color-palabra con respuestas manuales mediante teclado, introducido originalmente por Stroop (1935) y revisado de forma exhaustiva por MacLeod (1991).
 
 > **Nota:** El archivo `.psyexp` será completado durante el taller. Al finalizar la semana se subirá la versión resuelta a este repositorio.
 
@@ -43,12 +41,12 @@ taller_2_atencion/
 │   └── guia_materiales_taller2.docx # # Docx con la guia de los materiales del taller 2
 │
 ├── media/
-│    └── instructions/        # Instrucciones de la tarea en formato .png
+│   └── instructions/                  # Instrucciones en .png para PsychoPy
 │       ├── 1_instrucciones.png
-│       ├── 2_inicio_practica.png
+│       ├── 2_instrucciones_practica.png
 │       ├── 3_fin_practica.png
 │       ├── 4_descanso.png
-│       ├── 5_inicio_experimental.png
+│       ├── 5_instrucciones_experimental.png
 │       └── 6_fin_experimento.png
 │
 └── README.md
@@ -69,16 +67,42 @@ taller_2_atencion/
 | Tiempo límite por trial | 1500 ms |
 | ITI | 500 ms |
 | Feedback | Solo en fase de práctica |
-| Variables dependientes | Precisión (% correcto), RT (ms) y Efecto Stroop (RT incongruente − RT congruente) |
+| Variables de la tarea | Precisión (% correcto), RT (ms) y Efecto Stroop (RT incongruente − RT congruente) |
 
 ### Flujo de la tarea
 
-```
-instrucciones → inicio_practica
-→ [loop_practica: practica + feedback_practica]
-→ fin_practica → descanso (60 s) → inicio_experimental
-→ [loop_experimental: experimental + ITI]
-→ fin_experimento
+```mermaid
+flowchart TB
+ subgraph LP["loop_practica_stroop × 12"]
+        FP["feedback_practica"]
+        P["practica"]
+  end
+ subgraph LE["loop_experimental_stroop × 40"]
+        ITI["ITI"]
+        EX["experimental"]
+  end
+    A["instrucciones"] --> B["instrucciones_practica"]
+    B --> LP
+    P --> FP
+    LP --> C["fin_practica"]
+    C --> D["descanso 60 s"]
+    D --> E["instrucciones_experimental"]
+    E --> LE
+    EX --> ITI
+    LE --> F["fin_experimento"]
+
+    style FP fill:#AFA9EC,stroke:#534AB7,color:#26215C
+    style P  fill:#AFA9EC,stroke:#534AB7,color:#26215C
+    style ITI fill:#5DCAA5,stroke:#0F6E56,color:#04342C
+    style EX fill:#5DCAA5,stroke:#0F6E56,color:#04342C
+    style A  fill:#D3D1C7,stroke:#D50000,color:#2C2C2A,fill:#FFCDD2
+    style B  fill:#AFA9EC,stroke:#534AB7,color:#26215C
+    style LP fill:#EEEDFE,stroke:#534AB7,color:#26215C
+    style C  fill:#D3D1C7,stroke:#534AB7,color:#2C2C2A,fill:#AFA9EC
+    style D  fill:#FAC775,stroke:#BA7517,color:#412402
+    style E  fill:#5DCAA5,stroke:#0F6E56,color:#04342C
+    style LE fill:#E1F5EE,stroke:#0F6E56,color:#04342C
+    style F  fill:#D3D1C7,stroke:#FFD600,color:#2C2C2A,fill:#FFF9C4
 ```
 
 ---
