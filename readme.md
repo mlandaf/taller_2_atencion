@@ -72,37 +72,54 @@ taller_2_atencion/
 ### Flujo de la tarea
 
 ```mermaid
-flowchart TB
- subgraph LP["loop_practica × 12"]
-        FP["feedback_practica"]
-        P["practica"]
-  end
- subgraph LE["loop_experimental × 40"]
-        ITI["ITI"]
-        EX["experimental"]
-  end
-    A["instrucciones"] --> B["instrucciones_practica"]
-    B --> LP
-    P --> FP
-    LP --> C["fin_practica"]
-    C --> D["descanso 60 s"]
-    D --> E["instrucciones_experimental"]
-    E --> LE
-    EX --> ITI
-    LE --> F["fin_experimento"]
+flowchart TD
+    subgraph SB[BIENVENIDA]
+        A[instrucciones]
+    end
+    subgraph SP[PRÁCTICA]
+        B[instrucciones_practica]
+        B --> LP
+        subgraph LP[loop_practica × 8]
+            P[practica] --> FP[feedback_practica]
+        end
+        LP --> C[fin_practica]
+    end
+    subgraph SD[DESCANSO]
+        D[descanso 60 s]
+    end
+    subgraph SE[EXPERIMENTAL]
+        E[instrucciones_experimental]
+        E --> LE
+        subgraph LE[loop_experimental × 48]
+            EX[experimental] --> ITI[ITI]
+        end
+    end
+    subgraph SC[CIERRE]
+        F[fin_experimento]
+    end
 
-    style FP fill:#AFA9EC,stroke:#534AB7,color:#26215C
-    style P  fill:#AFA9EC,stroke:#534AB7,color:#26215C
-    style ITI fill:#5DCAA5,stroke:#0F6E56,color:#04342C
-    style EX fill:#5DCAA5,stroke:#0F6E56,color:#04342C
-    style A  fill:#D3D1C7,stroke:#D50000,color:#2C2C2A,fill:#FFCDD2
-    style B  fill:#AFA9EC,stroke:#534AB7,color:#26215C
-    style LP fill:#EEEDFE,stroke:#534AB7,color:#26215C
-    style C  fill:#D3D1C7,stroke:#534AB7,color:#2C2C2A,fill:#AFA9EC
+    A --> B
+    C --> D
+    D --> E
+    LE --> F
+
+    style A  fill:#6BA3D6,stroke:#2E6DA4,color:#0D2E4A
+    style F  fill:#E07B6A,stroke:#A83D2B,color:#3D0E07
     style D  fill:#FAC775,stroke:#BA7517,color:#412402
+    style B  fill:#AFA9EC,stroke:#534AB7,color:#26215C
+    style C  fill:#AFA9EC,stroke:#534AB7,color:#26215C
+    style LP fill:#EEEDFE,stroke:#534AB7,color:#26215C
+    style P  fill:#AFA9EC,stroke:#534AB7,color:#26215C
+    style FP fill:#AFA9EC,stroke:#534AB7,color:#26215C
     style E  fill:#5DCAA5,stroke:#0F6E56,color:#04342C
     style LE fill:#E1F5EE,stroke:#0F6E56,color:#04342C
-    style F  fill:#D3D1C7,stroke:#FFD600,color:#2C2C2A,fill:#FFF9C4
+    style EX fill:#5DCAA5,stroke:#0F6E56,color:#04342C
+    style ITI fill:#5DCAA5,stroke:#0F6E56,color:#04342C
+    style SB fill:#EBF3FA,stroke:#2E6DA4,color:#0D2E4A
+    style SP fill:#F8F7FF,stroke:#534AB7,color:#26215C
+    style SD fill:#FEF9EE,stroke:#BA7517,color:#412402
+    style SE fill:#F0FAF6,stroke:#0F6E56,color:#04342C
+    style SC fill:#FAEAE7,stroke:#A83D2B,color:#3D0E07
 ```
 
 ---
