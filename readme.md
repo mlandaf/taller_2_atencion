@@ -73,11 +73,11 @@ taller_2_atencion/
 
 ```mermaid
 flowchart TB
- subgraph LP["loop_practica_stroop × 12"]
+ subgraph LP["loop_practica × 12"]
         FP["feedback_practica"]
         P["practica"]
   end
- subgraph LE["loop_experimental_stroop × 40"]
+ subgraph LE["loop_experimental × 40"]
         ITI["ITI"]
         EX["experimental"]
   end
