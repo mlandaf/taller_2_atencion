@@ -157,5 +157,5 @@ Peirce, J. W., Gray, J. R., Simpson, S., MacAskill, M. R., Hochenberger, R., Sog
 ## Contacto
 
 **Marcelo Landa**  
-Asistente de cátedra — Investigación e Intervención desde las Neurociencias Aplicadas  
+Asistente de cátedra - Investigación e Intervención desde las Neurociencias Aplicadas  
 Universidad de Lima
