@@ -1,7 +1,7 @@
 # Taller 2 — Tarea Stroop
 
 - **Asignatura:** Investigación e Intervención desde las Neurociencias Aplicadas  
-- **Ciclo:** 2026-1  
+- **Ciclo:** 2026-2 
 - **Autor:** Marcelo Landa
 
 ---
@@ -11,6 +11,14 @@
 Este documento describe los materiales del Taller 2 del curso, centrado en el diseño e implementación de la tarea Stroop en PsychoPy Builder. La tarea implementa el paradigma clásico color-palabra con respuestas manuales mediante teclado, introducido originalmente por Stroop (1935) y revisado de forma exhaustiva por MacLeod (1991).
 
 > **Nota:** El archivo `.psyexp` será completado durante el taller. Al finalizar la semana se subirá la versión resuelta a este repositorio.
+
+### Secuencia de fase práctica
+
+![Secuencia de fase práctica](media/secuencia_practica.png)
+
+### Secuencia de fase experimental
+
+![Secuencia de fase experimental](media/secuencia_experimental.png)
 
 ---
 
@@ -80,7 +88,7 @@ flowchart TD
         B[instrucciones_practica]
         B --> LP
         subgraph LP[loop_practica × 8]
-            P[practica] --> FP[feedback_practica]
+            CP[cruz_fijacion_p] --> P[practica] --> FP[feedback_practica]
         end
         LP --> C[fin_practica]
     end
@@ -91,7 +99,7 @@ flowchart TD
         E[instrucciones_experimental]
         E --> LE
         subgraph LE[loop_experimental × 48]
-            EX[experimental] --> ITI[ITI]
+            CE[cruz_fijacion] --> EX[experimental] --> ITI[ITI]
         end
     end
     subgraph SC[CIERRE]
@@ -109,10 +117,12 @@ flowchart TD
     style B  fill:#AFA9EC,stroke:#534AB7,color:#26215C
     style C  fill:#AFA9EC,stroke:#534AB7,color:#26215C
     style LP fill:#EEEDFE,stroke:#534AB7,color:#26215C
+    style CP fill:#AFA9EC,stroke:#534AB7,color:#26215C
     style P  fill:#AFA9EC,stroke:#534AB7,color:#26215C
     style FP fill:#AFA9EC,stroke:#534AB7,color:#26215C
     style E  fill:#5DCAA5,stroke:#0F6E56,color:#04342C
     style LE fill:#E1F5EE,stroke:#0F6E56,color:#04342C
+    style CE fill:#5DCAA5,stroke:#0F6E56,color:#04342C
     style EX fill:#5DCAA5,stroke:#0F6E56,color:#04342C
     style ITI fill:#5DCAA5,stroke:#0F6E56,color:#04342C
     style SB fill:#EBF3FA,stroke:#2E6DA4,color:#0D2E4A
